@@ -59,9 +59,11 @@ def handle_message(event):
           c="下"
      else:
           c="不明"
+
+     text_back=a+b+c
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=a+b+c))
+        TextSendMessage(text=text_back))
 
 
 if __name__ == "__main__":
