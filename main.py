@@ -52,7 +52,9 @@ def handle_message(event):
 
      if stop=="中止"
           b="やめる"
-
+     else:
+          b=" "
+          
      if up_down=="ハイ"
           c="上"
      elif up_down=="ロー"
