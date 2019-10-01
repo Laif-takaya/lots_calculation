@@ -42,18 +42,25 @@ def callback():
 def handle_message(event):
     req_message=event.message.text.split()
 
-    currency_pair=req_message[1:7]
-    stop=req_message[1:2]
-    up_down=req_message[-3:-1]
+    currency_pair=req_message[0:7]
+    stop=req_message[0:2]
+    up_down=req_message[-2:]
     if currency_pair=="USD/JPY":
           a="ドル円"
+    elif currency_pair=="EUR/JPY":
+          a="ユーロ円"
+    elif currency_pair=="EUR/USD":
+          a="ユーロドル"
+    elif currency_pair=="AUD/JPY":
+          a="豪円"
+    elif currency_pair=="AUD/USD":
+          a="豪ドル"
+    elif currency_pair=="GBP/JPY":
+          a="ポンド円"
+    elif currency_pair=="NZD/JPY":
+          a="ニュージランド円"
     else:
           a="通過ペアは存在しません"
-
-    if stop=="中止":
-          b="やめる"
-    else:
-          b=" "
 
     if up_down=="ハイ":
           c="上"
@@ -62,7 +69,7 @@ def handle_message(event):
     else:
           c="不明"
 
-    text_back=a+b+c
+    text_back=a+c
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=text_back))
