@@ -40,7 +40,7 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    req_message=event.message.text.split()
+    req_message=event.message.text
 
     currency_pair=req_message[0:8]
     stop=req_message[0:2]
