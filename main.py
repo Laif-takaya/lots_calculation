@@ -42,7 +42,7 @@ def callback():
 def handle_message(event):
     req_message=event.message.text.split()
 
-    currency_pair=req_message[0:7]
+    currency_pair=req_message[0:8]
     stop=req_message[0:2]
     up_down=req_message[-2:]
     if currency_pair=="USD/JPY":
