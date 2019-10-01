@@ -40,29 +40,29 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    req_message=event.message.text
+    req_message=event.message.text.split()
 
-     currency_pair=req_message[1:7]
-     stop=req_message[1:2]
-     up_down=req_message[-3:-1]
-     if currency_pair=="USD/JPY":
+    currency_pair=req_message[1:7]
+    stop=req_message[1:2]
+    up_down=req_message[-3:-1]
+    if currency_pair=="USD/JPY":
           a="ドル円"
-     else:
+    else:
           a="通過ペアは存在しません"
 
-     if stop=="中止"
+    if stop=="中止":
           b="やめる"
-     else:
+    else:
           b=" "
-          
-     if up_down=="ハイ"
+
+    if up_down=="ハイ":
           c="上"
-     elif up_down=="ロー"
+    elif up_down=="ロー":
           c="下"
-     else:
+    else:
           c="不明"
 
-     text_back=a+b+c
+    text_back=a+b+c
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=text_back))
