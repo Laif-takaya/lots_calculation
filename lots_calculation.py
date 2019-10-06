@@ -42,7 +42,6 @@ def callback():
 def handle_message(event):
     req_message=event.message.text
     rm=req_message.split()
-    
     currency_pair=rm[0]
     account_balance=rm[1]
     difference=rm[2]
