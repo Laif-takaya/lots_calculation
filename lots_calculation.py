@@ -41,12 +41,22 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     req_message=event.message.text
+    rm=req_message.split()
 
-    #currency_pair=req_message[:7]
+    currency_pair=rm[0]
+    account_balance=rm[1]
+    difference=rm[2]
+    ab=float(account_balance)
+    df=float(difference)
 
+    if "JPY" in currency_pair:
+        cp=100
+    else:
+        cp=20
+    lots=ab*0.2/df/cp
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=req_message))
+        TextSendMessage(text=lots))
 
 
 if __name__ == "__main__":
