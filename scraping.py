@@ -17,23 +17,23 @@ def getWord(word):
     elif "GBP/USD" == currency_pair:
         RES = SOUP.find(id="GBPJPY_chart_ask")
         RES=RES.string
-        cp=float(RES)
+        cp=int(RES)
     elif "AUD/USD" == currency_pair:
         RES = SOUP.find(id="AUDJPY_chart_ask")
         RES=RES.string
-        cp=float(RES)
+        cp=int(RES)
     elif "EUR/GBP" == currency_pair:
         RES = SOUP.find(id="EURJPY_chart_ask")
         RES=RES.string
-        cp=float(RES)
+        cp=int(RES)
     elif "EUR/USD" == currency_pair:
         RES = SOUP.find(id="EURJPY_chart_ask")
         RES=RES.string
-        cp=float(RES)
+        cp=int(RES)
     elif "NZD/USD" == currency_pair:
         RES = SOUP.find(id="NZDJPY_chart_ask")
         RES=RES.string
-        cp=float(RES)
+        cp=int(RES)
     lots=ab*0.2/df/cp
 
     result = lots
