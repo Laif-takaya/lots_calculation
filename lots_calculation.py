@@ -9,7 +9,7 @@ from linebot.exceptions import (
 from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,
 )
-import urllib.request
+import request
 import os
 from bs4 import BeautifulSoup
 import scraping as sc
