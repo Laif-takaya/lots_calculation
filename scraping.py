@@ -14,26 +14,26 @@ def getWord(word):
 
     if "JPY" in currency_pair:
         cp=100
-    elif "GBP/USD" == currency_pair:
+    elif "GBPUSD" in currency_pair:
         RES = SOUP.find(id="GBPJPY_chart_ask")
         RES=RES.string
-        cp=int(RES)
-    elif "AUD/USD" == currency_pair:
+        cp=float(RES)
+    elif "AUDUSD" in currency_pair:
         RES = SOUP.find(id="AUDJPY_chart_ask")
         RES=RES.string
-        cp=int(RES)
-    elif "EUR/GBP" == currency_pair:
+        cp=float(RES)
+    elif "EURGBP" in currency_pair:
         RES = SOUP.find(id="EURJPY_chart_ask")
         RES=RES.string
-        cp=int(RES)
-    elif "EUR/USD" == currency_pair:
+        cp=float(RES)
+    elif "EURUSD" in currency_pair:
         RES = SOUP.find(id="EURJPY_chart_ask")
         RES=RES.string
-        cp=int(RES)
-    elif "NZD/USD" == currency_pair:
+        cp=float(RES)
+    elif "NZDUSD" in currency_pair:
         RES = SOUP.find(id="NZDJPY_chart_ask")
         RES=RES.string
-        cp=int(RES)
+        cp=float(RES)
     lots=ab*0.2/df/cp
 
     result = lots
