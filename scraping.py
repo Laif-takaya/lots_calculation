@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 def getNews(word):
     HTML = requests.get("https://info.finance.yahoo.co.jp/fx/list/")
-    SOUP = BeautifulSoup(HTML.text, "lxml")
+    SOUP = BeautifulSoup(HTML.content, "html.parser")
     rm=word.split()
 
     currency_pair=rm[0]
