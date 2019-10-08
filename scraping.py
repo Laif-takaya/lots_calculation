@@ -34,8 +34,8 @@ def getWord(word):
         RES = SOUP.find(id="NZDJPY_chart_ask")
         RES=RES.string
         cp=float(RES)
-    lots=ab*0.2/df/cp
+    lots=ab*0.02/df/cp
 
-    result = round(lots, 4)
+    result = round(lots, 2)
 
     return result
