@@ -36,6 +36,6 @@ def getWord(word):
         cp=float(RES)
     lots=ab*0.2/df/cp
 
-    result = lots
+    result = round(lots, 4)
 
     return result
