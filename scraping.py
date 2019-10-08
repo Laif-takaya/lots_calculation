@@ -2,8 +2,9 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
 def getNews(word):
-    URL = urlopen("https://info.finance.yahoo.co.jp/fx/list/")
-    HTML = requests.get(URL)
+    HTML = urlopen("https://info.finance.yahoo.co.jp/fx/list/")
+    data = HTML.read()
+    HTML = data.decode('utf-8')
     SOUP = BeautifulSoup(HTML.content, "html.parser")
     rm=word.split()
 
