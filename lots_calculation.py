@@ -11,6 +11,7 @@ from linebot.models import (
 )
 import os
 from bs4 import BeautifulSoup
+import scraping as sc
 
 app = Flask(__name__)
 
@@ -41,44 +42,14 @@ def callback():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    req_message=event.message.text
-    rm=req_message.split()
-    URL = "https://info.finance.yahoo.co.jp/fx/list/"
-    HTML = requests.get(URL)
-    SOUP = BeautifulSoup(HTML.content, "html.parser")
+    word = event.message.text
 
-    currency_pair=rm[0]
-    account_balance=rm[1]
-    difference=rm[2]
-    ab=float(account_balance)
-    df=float(difference)
+    # アイテム取得関数を呼び出し
+    result = sc.getWord(word)
 
-    if "JPY" in currency_pair:
-        cp=100
-    elif "GBP/USD" == currency_pair:
-        RES = SOUP.find(id="GBPJPY_chart_ask")
-        RES=RES.string
-        cp=float(RES)
-    elif "AUD/USD" == currency_pair:
-        RES = SOUP.find(id="AUDJPY_chart_ask")
-        RES=RES.string
-        cp=float(RES)
-    elif "EUR/GBP" == currency_pair:
-        RES = SOUP.find(id="EURJPY_chart_ask")
-        RES=RES.string
-        cp=float(RES)
-    elif "EUR/USD" == currency_pair:
-        RES = SOUP.find(id="EURJPY_chart_ask")
-        RES=RES.string
-        cp=float(RES)
-    elif "NZD/USD" == currency_pair:
-        RES = SOUP.find(id="NZDJPY_chart_ask")
-        RES=RES.string
-        cp=float(RES)
-    lots=ab*0.2/df/cp
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=lots))
+        TextSendMessage(text=result))
 
 
 if __name__ == "__main__":
