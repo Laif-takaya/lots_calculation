@@ -1,4 +1,4 @@
-import request
+#import request
 from bs4 import BeautifulSoup
 
 def getNews(word):
