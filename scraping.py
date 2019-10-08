@@ -1,8 +1,8 @@
-#import request
+from flask import request
 from bs4 import BeautifulSoup
 
 def getNews(word):
-    HTML = "https://info.finance.yahoo.co.jp/fx/list/"
+    HTML = requests.get("https://info.finance.yahoo.co.jp/fx/list/")
     SOUP = BeautifulSoup(HTML.content, "html.parser")
     rm=word.split()
 
