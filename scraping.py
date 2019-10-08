@@ -1,9 +1,8 @@
-import requests
+from urllib.request import urlopen
 from bs4 import BeautifulSoup
 
-URL = "https://info.finance.yahoo.co.jp/fx/list/"
 def getNews(word):
-
+    URL = urlopen("https://info.finance.yahoo.co.jp/fx/list/")
     HTML = requests.get(URL)
     SOUP = BeautifulSoup(HTML.content, "html.parser")
     rm=word.split()
@@ -39,4 +38,5 @@ def getNews(word):
     lots=ab*0.2/df/cp
 
     result = lots
+
     return result
