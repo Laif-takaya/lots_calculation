@@ -1,11 +1,9 @@
-from urllib.request import urlopen
+import request
 from bs4 import BeautifulSoup
 
 def getNews(word):
-    HTML = urlopen("https://info.finance.yahoo.co.jp/fx/list/")
-    data = HTML.read()
-    HTML = data.decode('utf-8')
-    SOUP = BeautifulSoup(HTML.content, "html.parser")
+    HTML = requests.get("https://info.finance.yahoo.co.jp/fx/list/")
+    SOUP = BeautifulSoup(HTML.text, "lxml")
     rm=word.split()
 
     currency_pair=rm[0]
